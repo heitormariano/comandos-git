@@ -1,0 +1,22 @@
+comandos adicionais interessantes:
+
+# verificar branchs do repositório remoto
+git branch -r 
+
+# verificar todas as branchs (locais e remotas)
+git branch -a
+
+# retornar para a última branch acessada
+# situação: mudança de master para feature-a e retornar para master
+git checkout feature-a
+
+# realizar o retorno para a branch anterior (master, no caso)
+git checkout - 
+
+# mudar url do repositório remoto
+# estrutura comando: git remote set-url <remote_name> <remote_url>
+# Exemplo uso
+git remote set-url origin https://git-repo/new-repository.git
+
+# verificar mudança
+git remote -v
