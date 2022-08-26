@@ -1,4 +1,4 @@
-Comandos abordados na Aula de Git do Rodrigo Branas
+Comandos abordados no curso de Git do Rodrigo Branas
 
 ---------------------------------- Introdução -----------------------------------
 
