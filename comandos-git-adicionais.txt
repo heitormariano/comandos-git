@@ -20,3 +20,7 @@ git remote set-url origin https://git-repo/new-repository.git
 
 # verificar mudança
 git remote -v
+
+# Alterar mensagem do commit
+# Depois de executar o comando, um editor será aberto para a mudança do texto do commit
+git commit --amend
