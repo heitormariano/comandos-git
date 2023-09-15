@@ -1,41 +1,41 @@
 Comandos abordados no curso de Git do Rodrigo Branas
 
----------------------------------- IntroduÁ„o -----------------------------------
+---------------------------------- Introdu√ß√£o -----------------------------------
 
-Verificar a vers„o do git
+Verificar a vers√£o do git
 # git version
 # outro comando: git --version
 
-CriaÁ„o de um repositÛrio (local) vazio
+Cria√ß√£o de um reposit√≥rio (local) vazio
 # git init
 
 Mostrar estrutura de pastas
 # tree .git
 
-Obs.: O comando tree funciona no cmd (windows). No bash do git o comando n„o È reconhecido
-Obs02.: No Ubuntu 18.04 (em meu pc) foi necess·rio realizar a instalaÁ„o do tree (comando sudo apt install tree, por exemplo)
+Obs.: O comando tree funciona no cmd (windows). No bash do git o comando n√£o √© reconhecido
+Obs02.: No Ubuntu 18.04 (em meu pc) foi necess√°rio realizar a instala√ß√£o do tree (comando sudo apt install tree, por exemplo)
 
 Realizar commit (exemplo)
 
--> Criando arquivos e seus conte˙dos
+-> Criando arquivos e seus conte√∫dos
 # echo a > a.txt
 # echo b > b.txt
 
-Adicionar arquivos para a staging area (o container para os arquivos que ser„o enviados para o respositÛrio)
+Adicionar arquivos para a staging area (o container para os arquivos que ser√£o enviados para o resposit√≥rio)
 
 # git add <nome_arquivo>
 Exemplo:
 # git add a.txt
 
-Adicionar todos os arquivos que est„o fora do container (n„o rastreados, fora da staging area)
+Adicionar todos os arquivos que est√£o fora do container (n√£o rastreados, fora da staging area)
 
 # git add -A (ou git add --all ou git add .)
 
-Olhar o container (saber quais s„o os arquivos n„o rastreados, visualizar aqueles que j· foram adicionados, etc)
+Olhar o container (saber quais s√£o os arquivos n√£o rastreados, visualizar aqueles que j√° foram adicionados, etc)
 
 # git status
 
-Realizar o commit (enviar arquivos para o repositÛrio) com uma mensagem
+Realizar o commit (enviar arquivos para o reposit√≥rio) com uma mensagem
 
 # git commit -m "mensagem_desejada"
 
@@ -51,173 +51,174 @@ visualizar os commits de forma mais organizada (em um linha)
 Verificar as Branches
 # git branch
 
-Branch padr„o: master (sempre aponta para o ˙ltimo commit)
+Branch padr√£o: master (sempre aponta para o √∫ltimo commit)
 
 Criar uma branch
 # git branch <nome_branch>
 Exemplo: 
 # git branch feature01
 
--> Branches s„o referÍncias (ponteiros) para determinado commit
+-> Branches s√£o refer√™ncias (ponteiros) para determinado commit
 
 
-Analisar as referÍncias de cada branch
+Analisar as refer√™ncias de cada branch
 Exemplo:
 # cat .git/refs/heads/master
 # cat .git/refs/heads/feature01
 
-Fazer a visualizaÁ„o dos commits e branches
+Fazer a visualiza√ß√£o dos commits e branches
 # git log --oneline --decorate
 
-TambÈm È possÌvel saber a branch apontada pelo HEAD
+Tamb√©m √© poss√≠vel saber a branch apontada pelo HEAD
 Obs.: O HEAD indica onde estamos (local de trabalho)
-Obs2.: A evoluÁ„o do cÛdigo (sequÍncia de commits) segue a partir do local apontado por Head
+Obs2.: A evolu√ß√£o do c√≥digo (sequ√™ncia de commits) segue a partir do local apontado por Head
 
 Exemplo:
 # cat .git/HEAD
 
-Fazer a mudanÁa de branch (realizar o "chaveamento" para uma branch)
+Fazer a mudan√ßa de branch (realizar o "chaveamento" para uma branch)
 # git checkout feature01
 
-[operaÁıes que podem ser realizadas apÛs a criaÁ„o da branch]
+[opera√ß√µes que podem ser realizadas ap√≥s a cria√ß√£o da branch]
 # echo 'teste' > teste.txt
 
 # git add -A
 # git commit -m "incluindo novo arquivo"
 
-Caso o programador esteja em um branch "anterior" È necess·rio usar o seguinte comando para visualizar os commits que est„o "adiante"
+Caso o programador esteja em um branch "anterior" √© necess√°rio usar o seguinte comando para visualizar os commits que est√£o "adiante"
 # git log --oneline --decorate --all
 
 Realizar o merge (ex.: merge no master)
-# git merge <nome_branch> (Ao realizar o merge, todas as modificaÁıes presentes na branch especificada s„o "unidas", "transferidas" para a branch corrente)
+# git merge <nome_branch> (Ao realizar o merge, todas as modifica√ß√µes presentes na branch especificada s√£o "unidas", "transferidas" para a branch corrente)
 
-SituaÁ„o: HEAD est· apontando para master (em outras palavras, master È a branch corrente, a branch em uso). E master est· "atr·s" de feature01 (essa branch est· com as atualizaÁıes necess·rias para master)
+Situa√ß√£o: HEAD est√° apontando para master (em outras palavras, master √© a branch corrente, a branch em uso). E master est√° "atr√°s" de feature01 (essa branch est√° com as atualiza√ß√µes necess√°rias para master)
 
 -> Comando (exemplo)
 # git merge feature01
 
-Mensagem apÛs o comando: fast-foward[avanÁo r·pido] (Ocorre apenas se n„o existirem divergÍncias entre os branches.Consiste em uma atualizaÁ„o de referÍncia. "Caminho feliz")
+Mensagem ap√≥s o comando: fast-foward[avan√ßo r√°pido] (Ocorre apenas se n√£o existirem diverg√™ncias entre os branches.Consiste em uma atualiza√ß√£o de refer√™ncia. "Caminho feliz")
 
 Excluir branch
 # git branch -d <nome_branch>
 # git branch -d feature01
 
-Realizar o checkout (mudanÁa de branch. O HEAD apontar· para a branch desejada) e criar uma branch ao mesmo tempo
+Realizar o checkout (mudan√ßa de branch. O HEAD apontar√° para a branch desejada) e criar uma branch ao mesmo tempo
 # git checkout -b feature02
 
--> SituaÁ„o: em master È criado um arquivo e em feature02 È criado outro. Nesse caso, temos duas branches com arquivos distintos (uma divergÍncia È percebida. Lembrando que divergÍncia È diferente de conflito. DivergÍncia = "seguir um caminho diferente")
+-> Situa√ß√£o: em master √© criado um arquivo e em feature02 √© criado outro. Nesse caso, temos duas branches com arquivos distintos (uma diverg√™ncia √© percebida. Lembrando que diverg√™ncia √© diferente de conflito. Diverg√™ncia = "seguir um caminho diferente")
 
-Visualizar os caminhos dos commits (uma vis„o "mais gr·fica") e identificar divergÍncias
+Visualizar os caminhos dos commits (uma vis√£o "mais gr√°fica") e identificar diverg√™ncias
 # git log --oneline --decorate --all --graph
 
 Comando para realizar o merge de master (branch em uso) com a branch feature02
 # git merge feature02
 
-Obs: Recursive strategy -> usada quando existe divergÍncia entre branches e se faz necess·rio a realizaÁ„o de um novo commit para uni-las (O commit È realizado automaticamente).
+Obs: Recursive strategy -> usada quando existe diverg√™ncia entre branches e se faz necess√°rio a realiza√ß√£o de um novo commit para uni-las (O commit √© realizado automaticamente).
 
-Excluir branch feature02 (Exemplo de situaÁ„o: os trabalhos na branch foram concluÌdos e ela n„o È mais necess·ria)
+Excluir branch feature02 (Exemplo de situa√ß√£o: os trabalhos na branch foram conclu√≠dos e ela n√£o √© mais necess√°ria)
 # git branch -d feature02
 
 -> Lidar com conflitos
 
-SituaÁ„o: um mesmo arquivo È criado para dois branches (master e feature03), mas o conte˙do dele È diferente em cada branch.
+Situa√ß√£o: um mesmo arquivo √© criado para dois branches (master e feature03), mas o conte√∫do dele √© diferente em cada branch.
 
 # git checkout -b feature03
-# echo g2 > g.txt (criaÁ„o do arquivo g.txt com conte˙do "g2")
+# echo g2 > g.txt (cria√ß√£o do arquivo g.txt com conte√∫do "g2")
 
 
--> Comandos de adiÁ„o de arquivo e commit
+-> Comandos de adi√ß√£o de arquivo e commit
 
-MudanÁa para a branch master
+Mudan√ßa para a branch master
 # git checkout master
 
-Inclus„o de arquivo g.txt com conte˙do diferente
+Inclus√£o de arquivo g.txt com conte√∫do diferente
 # echo g1 > g.txt
 
--> Comandos de inclus„o do arquivo e commit
-ReforÁando: Nesse ponto existem duas ramificaÁıes (branches) que possuem o mesmo arquivo, mas o conte˙do dele È distinto em cada branch. CONFLITO GERADO!
+-> Comandos de inclus√£o do arquivo e commit
+Refor√ßando: Nesse ponto existem duas ramifica√ß√µes (branches) que possuem o mesmo arquivo, mas o conte√∫do dele √© distinto em cada branch. CONFLITO GERADO!
 
 Realizando o merge
 # git merge feature03
 
-(mensagem È exibida informando que o conflito precisa ser resolvido, ou seja, È preciso escolher o conte˙do desejado para o arquivo. Depois o commit pode ser feito)
+(mensagem √© exibida informando que o conflito precisa ser resolvido, ou seja, √© preciso escolher o conte√∫do desejado para o arquivo. Depois o commit pode ser feito)
 
 # git status
 
 Resolver conflito
 # vim g.txt
-(editar arquivo mantendo o conte˙do desejado)
+(editar arquivo mantendo o conte√∫do desejado)
 
--> Fazer a inclus„o do arquivo na staging area e commit
+-> Fazer a inclus√£o do arquivo na staging area e commit
 
 # git log --oneline --decorate --all --graph
-Obs.: … indicado o merge realizado
+Obs.: √â indicado o merge realizado
 
-Excluir a feature03 (ela n„o ser· necess·ria)
+Excluir a feature03 (ela n√£o ser√° necess√°ria)
 # git branch -d feature03
 
 ---------------------------------- Stash -----------------------------------------
 
-Mover arquivos adicionados ou modificados (porÈm, n„o "commitados") para uma ·rea chamada stash
+Mover arquivos adicionados ou modificados (por√©m, n√£o "commitados") para uma √°rea chamada stash
 
-# git stash save <texto_identificador>
+# comando original da aula: git stash save <texto_identificador>
+# comando atual: git stash push -m "<mensagem>"
 
 ->Exemplo:
-# git stash save "i.txt" (o identificador n„o tem relaÁ„o com o arquivo)
+# git stash push -m "incluindo i.txt no stash"
 
-Listagem dos conte˙dos mantidos na stash
+Listagem dos conte√∫dos mantidos na stash
 
 # git stash list
 
-Aplicar as mudanÁas presentes em "stash" e n„o retir·-las da listagem original
-# git stash appply <referÍncia_listagem_stash>
+Aplicar as mudan√ßas presentes em "stash" e n√£o retir√°-las da listagem original
+# git stash appply <refer√™ncia_listagem_stash>
 
 Exemplo:
 # git stash apply stash@{2}
 
-Apagar as referÍncias que est„o em stash
-# git stash drop <referÍncia_listagem_stash>
+Apagar as refer√™ncias que est√£o em stash
+# git stash drop <refer√™ncia_listagem_stash>
 
 Exemplo:
 # git stash drop stash@{0}
 
-Evitar a realizaÁ„o dos comandos apply e drop
-# git stash pop (desempilha a ˙ltima referÍncia que est· na lista. O comando realiza o apply e o drop ao mesmo tempo)
+Evitar a realiza√ß√£o dos comandos apply e drop
+# git stash pop (desempilha a √∫ltima refer√™ncia que est√° na lista. O comando realiza o apply e o drop ao mesmo tempo)
 
 Criar uma nova branch a partir de um stash
 # git stash branch feature05
 
 ---------------------------------------- Remote, pull e Push ---------------------------------
 
-Comando "push" (empurrar, aÁ„o de atualizar uma referÍncia remota a partir de uma referÍncia local)
+Comando "push" (empurrar, a√ß√£o de atualizar uma refer√™ncia remota a partir de uma refer√™ncia local)
 
-GitHub : plataforma de compartilhamento e hospedagem de cÛdigo (no github podemos criar repositÛrios de cÛdigo)
+GitHub : plataforma de compartilhamento e hospedagem de c√≥digo (no github podemos criar reposit√≥rios de c√≥digo)
 
-Criar um repositÛrio remoto chamado "origin"
+Criar um reposit√≥rio remoto chamado "origin"
 # git remote add origin <url_repositorio>
 
 --> Exemplo:
 # git remote add origin https://github.com/heitormariano/gitstudies.git
 
-Conferir a presenÁa do repositÛrio
+Conferir a presen√ßa do reposit√≥rio
 # git remote
 
-Para ver mais detalhes sobre o repositÛrio
+Para ver mais detalhes sobre o reposit√≥rio
 # git remote -v
 
 * Comando Push (Empurrar o "grafo de commits" para o origin a partir do master)
 # git push origin master
 
-* Comando Pull (puxar, aÁ„o de atualizar uma referÍncia local a partir de uma referÍncia remota)
+* Comando Pull (puxar, a√ß√£o de atualizar uma refer√™ncia local a partir de uma refer√™ncia remota)
 
-Comando para puxar atualizaÁıes (Obs.: o pull realiza merge automaticamente. Caso n„o existam conflitos, funcionar· sem problemas. Ocorre o "fast-forward")
+Comando para puxar atualiza√ß√µes (Obs.: o pull realiza merge automaticamente. Caso n√£o existam conflitos, funcionar√° sem problemas. Ocorre o "fast-forward")
 # git pull origin master
 
-Clonar o repositÛrio [˙til quando estamos realizando contribuiÁıes com um repositÛrio remoto. TambÈm usado quando desejamos realizar os comandos de envio (push) em determinado repositÛrio e de obtenÁ„o de cÛdigo atualizado (pull) em outro (dois repositÛrios s„o adotados)]
+Clonar o reposit√≥rio [√∫til quando estamos realizando contribui√ß√µes com um reposit√≥rio remoto. Tamb√©m usado quando desejamos realizar os comandos de envio (push) em determinado reposit√≥rio e de obten√ß√£o de c√≥digo atualizado (pull) em outro (dois reposit√≥rios s√£o adotados)]
 
 # git clone [URL_repositorio_remoto] [nome_repositorio(pasta)_diferente_se_desejar]
 
-Obs.: Caso n„o seja especificado um nome diferente para o repositÛrio (pasta), ser· criada uma pasta com o mesmo nome definido no repositÛrio do GitHub.
+Obs.: Caso n√£o seja especificado um nome diferente para o reposit√≥rio (pasta), ser√° criada uma pasta com o mesmo nome definido no reposit√≥rio do GitHub.
 
 Exemplo: 
 # git clone https://github.com/heitormariano/gitstudies.git projeto2
@@ -225,7 +226,7 @@ Exemplo:
 Ver em detalhes os commits
 # git log --oneline --decorate --all --graph
 
--- SituaÁ„o:
+-- Situa√ß√£o:
 
 # cd projeto2
 
@@ -243,12 +244,12 @@ Ver em detalhes os commits
 
 Comando Fetch
 
-O fetch realiza o "pull pela metade" (traz atualizaÁıes, baixa os commits, arquivos e referÍncias do repositÛrio remoto para o respositÛrio local. N„o È feito merge de "master" com "orgin/master")
+O fetch realiza o "pull pela metade" (traz atualiza√ß√µes, baixa os commits, arquivos e refer√™ncias do reposit√≥rio remoto para o resposit√≥rio local. N√£o √© feito merge de "master" com "orgin/master")
 
-Importante: O comando ajuda a ver o que todo mundo est· trabalhando (ajuda a visualizar mudanÁas presentes no repositÛrio remoto e que n„o est„o no repositÛrio local)
--> Em outras palavras: a referÍncia "origin/master" fica na frente de "master"
+Importante: O comando ajuda a ver o que todo mundo est√° trabalhando (ajuda a visualizar mudan√ßas presentes no reposit√≥rio remoto e que n√£o est√£o no reposit√≥rio local)
+-> Em outras palavras: a refer√™ncia "origin/master" fica na frente de "master"
 
--- SituaÁ„o:
+-- Situa√ß√£o:
 
 # cd projeto2
 
@@ -260,70 +261,70 @@ Importante: O comando ajuda a ver o que todo mundo est· trabalhando (ajuda a vis
 
 # git push origin master
 
--- Uso do comando fetch no repositÛrio local (pasta) do projeto (Lembrando que a branch master È a que estar· sendo usada)
+-- Uso do comando fetch no reposit√≥rio local (pasta) do projeto (Lembrando que a branch master √© a que estar√° sendo usada)
 
 # cd projeto
 
 # git fetch
 
-Obs.: nesse momento as atualizaÁıes s„o obtidas para a referÍncia "origin/master". Essa referÍncia fica ‡ frente de "master". Usar comando "git log" para visualizar.
+Obs.: nesse momento as atualiza√ß√µes s√£o obtidas para a refer√™ncia "origin/master". Essa refer√™ncia fica √† frente de "master". Usar comando "git log" para visualizar.
 
 # git log --oneline --decorate --all --graph
 
-Comando diff (verficar as diferenÁas entre as branchs)
+Comando diff (verficar as diferen√ßas entre as branchs)
 
--> Verificar as diferenÁas entre "master" e "origin/master")
+-> Verificar as diferen√ßas entre "master" e "origin/master")
 # git diff master origin/master
 
 Realizando o merge (considerando master como a branch corrente)
 # git merge origin/master
 
--- Coment·rio: nesse caso o merge È realizado a partir de origin/master (referÍncia do repositÛrio remoto), uma vez que ele È o mais atual
+-- Coment√°rio: nesse caso o merge √© realizado a partir de origin/master (refer√™ncia do reposit√≥rio remoto), uma vez que ele √© o mais atual
 
-Importante: Caso existam conflitos, ser· preciso, naturalmente, trat·-los antes de realizar o merge.
+Importante: Caso existam conflitos, ser√° preciso, naturalmente, trat√°-los antes de realizar o merge.
 # git log --oneline --decorate --all --graph
 
 
 -------------------------------------- Reset -----------------------------------------
 
-Fluxo b·sico de criaÁ„o e commit de um novo arquivo em master
+Fluxo b√°sico de cria√ß√£o e commit de um novo arquivo em master
 # echo k > k.txt
 # git status (ver status no projeto)
 # git add -A
 
 # git commit -m "arquivo k.txt"
 
-# git status (nova verificaÁ„o)
+# git status (nova verifica√ß√£o)
 
 Como desfazer um commit realizado por engano?
 Comando: git reset <commit>
 
-Com o comando acima, realizamos uma mudanÁa de referÍncia. Podemos, por exemplo, indicar um commit anterior para master "apontar". O commit do arquivo k.txt n„o È excluÌdo, mas passamos a ter uma nova referÍncia para master (uma espÈcie de atualizaÁ„o de referÍncia).
+Com o comando acima, realizamos uma mudan√ßa de refer√™ncia. Podemos, por exemplo, indicar um commit anterior para master "apontar". O commit do arquivo k.txt n√£o √© exclu√≠do, mas passamos a ter uma nova refer√™ncia para master (uma esp√©cie de atualiza√ß√£o de refer√™ncia).
 
--> 3 modos de reset : soft, mixed (padr„o), hard
+-> 3 modos de reset : soft, mixed (padr√£o), hard
 
 -- soft
 
-** git soft (ao realizar o reset, o arquivo que estava presente no commit ficar· na staging area, pronto para ser "commitado" novamente se necess·rio)
+** git soft (ao realizar o reset, o arquivo que estava presente no commit ficar√° na staging area, pronto para ser "commitado" novamente se necess√°rio)
 
 Exemplo:
-# git reset --soft 8f11 (8f11 È o inÌcio do hash do commit anterior)
+# git reset --soft 8f11 (8f11 √© o in√≠cio do hash do commit anterior)
 
-verificaÁ„o da ·rvore de commits
+verifica√ß√£o da √°rvore de commits
 # git log --oneline --decorate --all --graph
 
-obs_01: o commit do arquivo k.txt n„o aparece na listagem
-obs_02: o arquivo k.txt È apresentado como um arquivo "staged" (pronto para ser "commitado")
+obs_01: o commit do arquivo k.txt n√£o aparece na listagem
+obs_02: o arquivo k.txt √© apresentado como um arquivo "staged" (pronto para ser "commitado")
 
 -- mixed
 Novo commit (commit para o arquivo k.txt)
 # git commit -m "arquivo k.txt"
 
-# git reset --mixed 8f11 (poderia ser apenas git reset 8f11. Isso devido o fato de o reset padr„o ser o "mixed")
+# git reset --mixed 8f11 (poderia ser apenas git reset 8f11. Isso devido o fato de o reset padr√£o ser o "mixed")
 
-obs_01: o commit do arquivo k.txt n„o aparece na listagem (da mesma forma que testado com o git reset --soft <commit>)
+obs_01: o commit do arquivo k.txt n√£o aparece na listagem (da mesma forma que testado com o git reset --soft <commit>)
 
-obs_02: o arquivo k.txt È apresentado como "untracked". Em outras palavras, o arquivo n„o fica na staging area
+obs_02: o arquivo k.txt √© apresentado como "untracked". Em outras palavras, o arquivo n√£o fica na staging area
 
 
 -- hard
@@ -334,43 +335,43 @@ git commit -m "arquivo k.txt"
 
 Comando git reset --hard 8f11
 
--- Aparecer· uma mensagem semelhante a esta (relacionada a referÍncia do HEAD)
+-- Aparecer√° uma mensagem semelhante a esta (relacionada a refer√™ncia do HEAD)
 HEAD is now at 8f11991 [texto do commit]
 
--- ao realizar o git status nenhum arquivo aparecer· (È como se o arquivo k.txt jamais existisse. A ·rvore de commits È "limpa" (fica no estado exato do commit indicado no reset).
+-- ao realizar o git status nenhum arquivo aparecer√° (√© como se o arquivo k.txt jamais existisse. A √°rvore de commits √© "limpa" (fica no estado exato do commit indicado no reset).
 
 Desfazer um reset
-SituaÁ„o: Apliquei o git reset, mas tenho interesse em desfazer a operaÁ„o. 
+Situa√ß√£o: Apliquei o git reset, mas tenho interesse em desfazer a opera√ß√£o. 
 
 Comandos:
-# git reflog (armazena, por exemplo, as referÍncias afetadas pelos resets)
+# git reflog (armazena, por exemplo, as refer√™ncias afetadas pelos resets)
 
-# git reset --hard 1649 (o HEAD passar· a referencia o commit indicado. Nesse exemplo, a referÍncia È do commit do arquivo k.txt)
+# git reset --hard 1649 (o HEAD passar√° a referencia o commit indicado. Nesse exemplo, a refer√™ncia √© do commit do arquivo k.txt)
 
--- Aparecer· uma mensagem semelhante a esta:
+-- Aparecer√° uma mensagem semelhante a esta:
 HEAD is now at 1649e24 [mensagem commit]
 
-Verificar presenÁa do arquivo k.txt
+Verificar presen√ßa do arquivo k.txt
 # ls -la
 
--- Nova situaÁ„o (envolvendo repositÛrios remotos)
--- Suponho que o push foi realizado È possÌvel desfazer a atualizaÁ„o feita no repositÛrio remoto? Sim, mas È recomendado adotar outras estratÈgias. Por exemplo, fazer um novo commit com correÁıes e ajustes necess·rios. 
+-- Nova situa√ß√£o (envolvendo reposit√≥rios remotos)
+-- Suponho que o push foi realizado √© poss√≠vel desfazer a atualiza√ß√£o feita no reposit√≥rio remoto? Sim, mas √© recomendado adotar outras estrat√©gias. Por exemplo, fazer um novo commit com corre√ß√µes e ajustes necess√°rios. 
 
--- Normalmente n„o È possÌvel realizar um push de uma "arvore de commits" que est· "atr·s" (behind) da "·rvore de commits" existente no repositÛrio remoto. Forma de entender: Tentar enviar para o repositÛrio uma feature que apresenta incrementos/ajustes ausentes. E esses incrementos/ajustes, por sua vez, j· tinham sido enviados anteriormente e, provavelmente, j· est„o em uso pela equipe de desenvolvimento. 
-	* AtenÁ„o: cuidado com o reset de commits j· enviados para o repositÛrio remoto (adote outras soluÁıes sempre que possÌvel)
+-- Normalmente n√£o √© poss√≠vel realizar um push de uma "arvore de commits" que est√° "atr√°s" (behind) da "√°rvore de commits" existente no reposit√≥rio remoto. Forma de entender: Tentar enviar para o reposit√≥rio uma feature que apresenta incrementos/ajustes ausentes. E esses incrementos/ajustes, por sua vez, j√° tinham sido enviados anteriormente e, provavelmente, j√° est√£o em uso pela equipe de desenvolvimento. 
+	* Aten√ß√£o: cuidado com o reset de commits j√° enviados para o reposit√≥rio remoto (adote outras solu√ß√µes sempre que poss√≠vel)
 
 
--- Na aula do Rodrigo Branas È exemplificado como "forÁar" o reset no repositÛrio remoto (novamente: È muito importante evitar isso, pois estamos compromenteno o "histÛrico" das atividades/implementaÁ„o do projeto em quest„o)
+-- Na aula do Rodrigo Branas √© exemplificado como "for√ßar" o reset no reposit√≥rio remoto (novamente: √© muito importante evitar isso, pois estamos compromenteno o "hist√≥rico" das atividades/implementa√ß√£o do projeto em quest√£o)
 
 Exemplo demonstrado na aula
--- atualizaÁ„o do respositÛrio remoto
+-- atualiza√ß√£o do resposit√≥rio remoto
 # git log --oneline --decorate --all --graph
 # git push origin master
 
 # git reset --hard 8f11
 
 Tentativa de push tradicional
-# git push origin master (aparecer· mensagem informando que a operaÁ„o n„o pode ser feita)
+# git push origin master (aparecer√° mensagem informando que a opera√ß√£o n√£o pode ser feita)
 
-Realizar push forÁado
+Realizar push for√ßado
 # git push origin master -f (ou --force)
